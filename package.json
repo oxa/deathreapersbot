@@ -1,0 +1,10 @@
+{
+  "name": "DeathReapers-bot",
+  "version": "1.0.0",
+  "description": "DeathReapers bot",
+  "main": "bot.js",
+  "author": "gladhuie",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}
