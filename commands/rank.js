@@ -17,3 +17,9 @@ exports.run = (client, message, args) => {
         console.log("Got an error: ", e);
     });
 };
+
+exports.conf = {
+  enabled: true,
+  aliases: ["ranks"],
+    name:"rank"
+};

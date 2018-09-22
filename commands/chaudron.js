@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run =  (client, message, args) => {
     let alchi = (args[1] === undefined) ? 0 : args[1];
     let raider = (args[0] === undefined) ? 0 : args[0];
     let flasks = (raider - alchi) * 3 + (alchi * 2);
@@ -15,4 +15,10 @@ exports.run = (client, message, args) => {
         message.channel.send("Il faut craft " + cauldrons + " chaudron(s) et " + flasks_to + " flask(s)");
     } else
         message.channel.send("Il faut craft " + cauldrons + " chaudron(s) " + flasks_left + " flask(s) de rab pour le MM+ ! ");
+};
+
+exports.conf = {
+  enabled: true,
+  aliases: ["chaudrons"],
+    name : "chaudron"
 };

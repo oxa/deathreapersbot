@@ -25,3 +25,8 @@ exports.run = (client, message, args) => {
         console.log("Got an error: ", e);
     });
 };
+
+exports.conf = {
+    name:"logs", enabled: true,
+    aliases: ["log"],
+};

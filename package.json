@@ -5,6 +5,7 @@
   "main": "bot.js",
   "author": "gladhuie",
   "dependencies": {
-    "discord.js": "^11.4.2"
+    "discord.js": "^11.4.2",
+    "enmap": "^4.2.1"
   }
 }

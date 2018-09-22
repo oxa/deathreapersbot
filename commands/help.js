@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
             title: "Besoin d'aide ?",
             description: "Voici les commandes que je supporte pour l'instant : ",
             fields: [{
-                name: "!logs",
+                name: "!logs ou !log",
                 value: "Affiche un lien vers les Warcraftlogs de la guilde"
             },
                 {
@@ -25,4 +25,10 @@ exports.run = (client, message, args) => {
                 text: "DeathReapers v"+version.version
             }
         }});
+};
+
+exports.conf = {
+    name:"help",
+  enabled: true,
+  aliases: [],
 };
