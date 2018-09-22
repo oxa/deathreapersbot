@@ -18,6 +18,10 @@ exports.run = (client, message, args) => {
                             name: "Dernier Raid",
                             value: "https://www.warcraftlogs.com/reports/"+reports[0].id
                         },
+                        {
+                            name:"Optimisation du Raid",
+                            value:"https://www.wipefest.net/report/"+reports[0].id+"\nhttps://wowanalyzer.com/report/"+reports[0].id
+                        }
                     ],
                 }});
         });

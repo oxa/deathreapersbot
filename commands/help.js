@@ -26,7 +26,7 @@ exports.run = (client, message, args) => {
                 },
             ],
             footer: {
-                text: "DeathReapers v"+version.version
+                text: "DeathReapers Bot v"+version.version
             }
         }});
 };

@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const config = require("./authbeta.json");
+const config = require("./config.json");
 const client = new Discord.Client();
 const {promisify} = require('util');
 const readdir = promisify(require("fs").readdir);
@@ -74,7 +74,7 @@ const init = async () => {
 
     });
     client.on('error', console.error);
-    
+
     client.login(config.token);
 };
 
