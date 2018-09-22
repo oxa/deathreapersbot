@@ -73,7 +73,8 @@ const init = async () => {
         cmd.run(client, message, args);
 
     });
-
+    client.on('error', console.error);
+    
     client.login(config.token);
 };
 
