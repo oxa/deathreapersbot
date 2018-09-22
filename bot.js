@@ -10,20 +10,20 @@ client.commands = new Enmap();
 client.aliases = new Enmap();
 
 client.loadCommand = (commandName) => {
-try {
-  console.log(`Loading Command: ${commandName}`);
-  const props = require(`./commands/${commandName}`);
-  if (props.init) {
-    props.init(client);
-  }
-  client.commands.set(props.conf.name, props);
-  props.conf.aliases.forEach(alias => {
-    client.aliases.set(alias, props.conf.name);
-  });
-  return false;
-} catch (e) {
-  return `Unable to load command ${commandName}: ${e}`;
-}
+    try {
+        console.log(`Loading Command: ${commandName}`);
+        const props = require(`./commands/${commandName}`);
+        if (props.init) {
+            props.init(client);
+        }
+        client.commands.set(props.conf.name, props);
+        props.conf.aliases.forEach(alias => {
+            client.aliases.set(alias, props.conf.name);
+        });
+        return false;
+    } catch (e) {
+        return `Unable to load command ${commandName}: ${e}`;
+    }
 };
 
 const init = async () => {
@@ -38,7 +38,19 @@ const init = async () => {
 
 
     client.on("ready", () => {
-        console.log("DeathReapers Bot is up");
+        if (client.user.id==="491592769588953088"){
+            console.log("DeathReapers Beta is UP")
+        } else {
+            console.log("DeathReapers Prod is UP")
+        }
+        try {
+            client.users.get("121522123910021120").send("I'm Back !");
+            client.user.setActivity('!help pour me parler', { type: 'WATCHING' });
+        }
+        catch(error) {
+            console.error(error);
+
+        }
     });
 
 
@@ -54,8 +66,10 @@ const init = async () => {
         const command = args.shift().toLowerCase();
 
         const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
-        console.log("cmd : "+command)
-        if (!cmd) return;
+        if (!cmd) {
+            message.author.send("Heu... je sens que tu veux me dire quelque chose mais tu galères... Tape : !help pour avoir un coup de main");
+            return;
+        }
         cmd.run(client, message, args);
 
     });
