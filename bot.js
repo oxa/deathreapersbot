@@ -8,7 +8,6 @@ const Enmap = require("enmap");
 
 client.commands = new Enmap();
 client.aliases = new Enmap();
-
 client.loadCommand = (commandName) => {
     try {
         console.log(`Loading Command: ${commandName}`);
@@ -75,7 +74,7 @@ const init = async () => {
     });
     client.on('error', console.error);
 
-    client.login(config.token);
+    client.login(process.env.BOT_TOKEN);
 };
 
 init();

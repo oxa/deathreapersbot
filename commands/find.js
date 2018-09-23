@@ -14,40 +14,40 @@ exports.run =  (client, message, args) => {
             }
 
             message.author.send({embed: {
-            color: 3447003,
-            author: {
-              name: "Profils de "+profile.name,
-              icon_url: profile.thumbnail_url
-            },
+                    color: 3447003,
+                    author: {
+                        name: "Profils de "+profile.name,
+                        icon_url: profile.thumbnail_url
+                    },
 
-            fields: [
+                    fields: [
 
-                {
-                name: "Général",
-                value: "Haut-faits : **"+profile.achievement_points+"**\n Ilvl : **"+profile.gear.item_level_equipped+"**\n MM+ score : **"+profile.mythic_plus_scores.all+"**"
-            },
-                {
-                name: "WarcraftLogs",
-                value: "https://www.warcraftlogs.com/character/eu/elune/"+args[0]+"#difficulty=4"
-            },
-                {
-                    name: "Raider.io",
-                    value: profile.profile_url
-                },
-                {
-                    name: "WoW Armurie",
-                    value: "https://worldofwarcraft.com/fr-fr/character/elune/"+args[0]
-                },
-                                {
-                name: "wow analyzer",
-                value: "https://wowanalyzer.com/character/EU/Elune/"+args[0]+"/"
-                 },
-                {
-                    name: "RaidBot simulation",
-                    value: "https://www.raidbots.com/simbot/stats?region=eu&realm=elune&name="+args[0]
-                },
-            ],
-        }});
+                        {
+                            name: "Général",
+                            value: "Haut-faits : **"+profile.achievement_points+"**\n Ilvl : **"+profile.gear.item_level_equipped+"**\n MM+ score : **"+profile.mythic_plus_scores.all+"**"
+                        },
+                        {
+                            name: "WarcraftLogs",
+                            value: "https://www.warcraftlogs.com/character/eu/elune/"+args[0]+"#difficulty=4"
+                        },
+                        {
+                            name: "Raider.io",
+                            value: profile.profile_url
+                        },
+                        {
+                            name: "WoW Armurie",
+                            value: "https://worldofwarcraft.com/fr-fr/character/elune/"+args[0]
+                        },
+                        {
+                            name: "wow analyzer",
+                            value: "https://wowanalyzer.com/character/EU/Elune/"+args[0]+"/"
+                        },
+                        {
+                            name: "RaidBot simulation",
+                            value: "https://www.raidbots.com/simbot/stats?region=eu&realm=elune&name="+args[0]
+                        },
+                    ],
+                }});
 
         });
     }).on('error', function(e){
@@ -56,7 +56,7 @@ exports.run =  (client, message, args) => {
 };
 
 exports.conf = {
-  enabled: true,
-  aliases: ["cherche","wow","profile","profil"],
+    enabled: true,
+    aliases: ["cherche","wow","profile","profil"],
     name : "find"
 };
