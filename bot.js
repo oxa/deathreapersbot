@@ -55,14 +55,18 @@ const init = async () => {
 
     client.on("message", message => {
         if (message.author.bot) return;
+        //TODO:review usage of this block
         const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
         if (message.content.match(prefixMention)) {
             return message.reply(`Utilise \`${config.prefix}\` pour me parler`);
         }
+        // end of block
         if (message.content.indexOf(config.prefix) !== 0) return;
 
         const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
+
+        console.log(message.author.username+" : "+message.content)
 
         const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
         if (!cmd) {

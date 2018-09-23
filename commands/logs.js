@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
                             value: "https://www.warcraftlogs.com/reports/"+reports[0].id
                         },
                         {
-                            name:"Optimisation du Raid",
+                            name:":new: Optimisation du Raid",
                             value:"https://www.wipefest.net/report/"+reports[0].id+"\nhttps://wowanalyzer.com/report/"+reports[0].id
                         }
                     ],

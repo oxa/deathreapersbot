@@ -3,7 +3,7 @@ exports.run = (client, message, args) => {
     message.author.send({embed: {
             color: 3447003,
             title: "Besoin d'aide ?",
-            description: "Voici les commandes que je supporte pour l'instant : ",
+            description: "Voici les commandes que je supporte : ",
             fields: [{
                 name: "!logs ou !log",
                 value: "Affiche un lien vers les Warcraftlogs de la guilde"
