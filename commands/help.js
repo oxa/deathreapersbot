@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
             title: "Besoin d'aide ?",
             description: "Voici les commandes que je supporte : ",
             fields: [{
-                name: "!logs ou !log",
+                name: ":new: !logs ou !log",
                 value: "Affiche un lien vers les Warcraftlogs de la guilde"
             },
                 {
@@ -17,11 +17,11 @@ exports.run = (client, message, args) => {
                     value: "Affiche le nombre de chaudrons/flasks pour un raid de 3h\n Exemple : !chaudron 20 4"
                 },
                 {
-                    name: "!profil <joueur>",
+                    name: ":new: !profil <joueur>",
                     value: "Affiche le profile du joueur \n Exemple : !profil Millieharis"
                 },
                                 {
-                    name: ":new:!mm ou !affix",
+                    name: ":new: !mm ou !affix",
                     value: "Affiche des infos sur les Mythic+"
                 },
                 {
