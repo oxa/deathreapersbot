@@ -11,7 +11,7 @@ exports.run = (client, message, args) => {
         res.on('end', function () {
             var rank = JSON.parse(body)
             var answer = "On est " + rank.realm_rank + "eme du serveur !"
-            message.channel.send(answer + " : https://www.wowprogress.com/guild/eu/elune/DeathReapers");
+            message.channel.send(answer + " : <https://www.wowprogress.com/guild/eu/elune/DeathReapers>");
         });
     }).on('error', function (e) {
         console.log("Got an error: ", e);

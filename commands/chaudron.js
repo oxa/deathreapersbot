@@ -1,5 +1,4 @@
 exports.run =  (client, message, args) => {
-    console.log(args.length)
     let alchi = (args[1] === undefined) ? 0 : args[1];
     let raider = (args[0] === undefined) ? 0 : args[0];
     let flasks = (raider - alchi) * 3 + (alchi * 2);

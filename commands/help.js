@@ -20,6 +20,10 @@ exports.run = (client, message, args) => {
                     name: "!profil <joueur>",
                     value: "Affiche le profile du joueur \n Exemple : !profil Millieharis"
                 },
+                                {
+                    name: ":new:!mm ou !affix",
+                    value: "Affiche des infos sur les Mythic+"
+                },
                 {
                     name: "!help",
                     value: "Affiche ce message"
