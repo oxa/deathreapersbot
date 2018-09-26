@@ -3,11 +3,13 @@ const config = require("./config.json");
 const client = new Discord.Client();
 const {promisify} = require('util');
 const readdir = promisify(require("fs").readdir);
-
+const https = require("https");
 const Enmap = require("enmap");
 
 client.commands = new Enmap();
 client.aliases = new Enmap();
+client.raiders = new Enmap();
+
 client.loadCommand = (commandName) => {
     try {
         console.log(`Loading Command: ${commandName}`);
@@ -45,6 +47,26 @@ const init = async () => {
         try {
             client.users.get("121522123910021120").send("I'm Back !");
             client.user.setActivity('!help pour me parler', { type: 'WATCHING' });
+                var url = 'https://eu.api.battle.net/wow/guild/Elune/DeathReapers?fields=members&locale=en_GB&apikey='+process.env.BLIZZ_KEY;
+            https.get(url, function (res) {
+                var body = '';
+                res.on('data', function (chunk) {
+                    body += chunk;
+                });
+                res.on('end', function () {
+
+                    var members_raw = JSON.parse(body);
+                    for (var id in members_raw.members) {
+                        if (members_raw.members[id].rank <= 4 && members_raw.members[id].character.level === 120) {
+                            client.raiders.set(members_raw.members[id].character.name, 0);
+                        }
+                    }
+                    console.log("Imported : "+client.raiders.keyArray().length+" guild members");
+                });
+            }).on('error', function (e) {
+                console.log("Got an error: ", e);
+            });
+
         }
         catch(error) {
             console.error(error);
