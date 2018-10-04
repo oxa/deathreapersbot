@@ -7,9 +7,9 @@ exports.run =  (client, message, args) => {
             body += chunk;
         });
         res.on('end', function(){
-            var profile=JSON.parse(body)
+            var profile=JSON.parse(body);
             if (profile.statusCode === 400){
-                console.log(profile)
+                console.log(profile);
                 return;
             }
 
@@ -54,9 +54,7 @@ exports.run =  (client, message, args) => {
         console.log("Got an error: ", e);
     });
 
-
 };
-
 
 
 exports.conf = {

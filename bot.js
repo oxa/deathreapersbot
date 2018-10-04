@@ -45,7 +45,7 @@ const init = async () => {
             console.log("DeathReapers Prod is UP")
         }
         try {
-            client.users.get("121522123910021120").send("I'm Back !");
+            //client.users.get("121522123910021120").send("I'm Back !");
             client.user.setActivity('!help pour me parler', { type: 'WATCHING' });
                 var url = 'https://eu.api.battle.net/wow/guild/Elune/DeathReapers?fields=members&locale=en_GB&apikey='+process.env.BLIZZ_KEY;
             https.get(url, function (res) {
@@ -54,11 +54,11 @@ const init = async () => {
                     body += chunk;
                 });
                 res.on('end', function () {
-
+                    console.log(body);
                     var members_raw = JSON.parse(body);
-                    for (var id in members_raw.members) {
+                    for (let id in members_raw.members) {
                         if (members_raw.members[id].rank <= 4 && members_raw.members[id].character.level === 120) {
-                            client.raiders.set(members_raw.members[id].character.name, 0);
+                            client.raiders.set(members_raw.members[id].character.name, {});
                         }
                     }
                     console.log("Imported : "+client.raiders.keyArray().length+" guild members");
