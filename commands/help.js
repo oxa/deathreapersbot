@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
                     value: "Affiche des infos sur les Mythic+"
                 },
                 {
-                    name: "!help",
+                    name: "!aide",
                     value: "Affiche ce message"
                 },
             ],
@@ -38,5 +38,5 @@ exports.run = (client, message, args) => {
 exports.conf = {
     name:"help",
   enabled: true,
-  aliases: [],
+  aliases: ["aide","info","about"],
 };

@@ -45,8 +45,8 @@ const init = async () => {
             console.log("DeathReapers Prod is UP")
         }
         try {
-            //client.users.get("121522123910021120").send("I'm Back !");
-            client.user.setActivity('!help pour me parler', { type: 'WATCHING' });
+            client.users.get("121522123910021120").send("I'm UP and running");
+            client.user.setActivity('!aide pour me parler', { type: 'WATCHING' });
                 var url = 'https://eu.api.battle.net/wow/guild/Elune/DeathReapers?fields=members&locale=en_GB&apikey='+process.env.BLIZZ_KEY;
             https.get(url, function (res) {
                 var body = '';
@@ -54,7 +54,6 @@ const init = async () => {
                     body += chunk;
                 });
                 res.on('end', function () {
-                    console.log(body);
                     var members_raw = JSON.parse(body);
                     for (let id in members_raw.members) {
                         if (members_raw.members[id].rank <= 4 && members_raw.members[id].character.level === 120) {
@@ -62,6 +61,10 @@ const init = async () => {
                         }
                     }
                     console.log("Imported : "+client.raiders.keyArray().length+" guild members");
+                    //let members=client.guilds.get('492764538857324544').members;
+                    //for (let member in members){
+                    //    console.log(client.guilds.get('492764538857324544').members.get(member));
+                    //}
                 });
             }).on('error', function (e) {
                 console.log("Got an error: ", e);
@@ -73,7 +76,6 @@ const init = async () => {
 
         }
     });
-
 
     client.on("message", message => {
         if (message.author.bot) return;
@@ -92,12 +94,37 @@ const init = async () => {
 
         const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
         if (!cmd) {
-            message.author.send("Heu... je sens que tu veux me dire quelque chose mais tu galères... Tape : !help pour avoir un coup de main");
+            message.author.send("Heu... je sens que tu veux me dire quelque chose mais tu galères... Tape : !aide pour avoir un coup de main");
             return;
         }
         cmd.run(client, message, args);
 
     });
+
+    client.on("guildMemberAdd", member => {
+        member.send({embed: {
+                    color: 3447003,
+                    fields: [
+                        {
+                            name: "Bienvenue chez DeathReapers !",
+                            value: "Que tu sois un membre ou de passage sois le bienvenue ! Merci de respecter la charte de guilde. "
+                        },
+                       {
+                            name: "De passage ?",
+                            value: "Le cannal textuel **#public** et les cannaux vocaux **#donjons** te sont ouverts !\n Bon jeux parmis nous ! "
+                        },
+                       {
+                            name: ":new: DeathReapers Recrute !",
+                            value: "DeathReapers est toujours à la recherche de joueurs motivés ! \n/w Préludix, Millieharis, Naturiel ou rendez-vous sur [wowprogress](https://www.wowprogress.com/guild/eu/elune/deathReapers) pour plus d'infos"
+                        },
+                        {
+                            name: "De l'aide ?",
+                            value: "!aide pour plus d'infos sur le bot"
+                        },
+                    ],
+                }});
+    });
+
     client.on('error', console.error);
 
     client.login(process.env.BOT_TOKEN);
