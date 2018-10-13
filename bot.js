@@ -17,10 +17,13 @@ client.loadCommand = (commandName) => {
         if (props.init) {
             props.init(client);
         }
-        client.commands.set(props.conf.name, props);
-        props.conf.aliases.forEach(alias => {
+        if (props.conf.enabled){
+            client.commands.set(props.conf.name, props);
+            props.conf.aliases.forEach(alias => {
             client.aliases.set(alias, props.conf.name);
         });
+        }
+
         return false;
     } catch (e) {
         return `Unable to load command ${commandName}: ${e}`;
@@ -79,6 +82,11 @@ const init = async () => {
 
     client.on("message", message => {
         if (message.author.bot) return;
+        if (!config.allowed_users.includes(message.author.username)){
+            console.log(message.author.username+ "forbiden command !");
+
+            return;
+        }
         //TODO:review usage of this block
         const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
         if (message.content.match(prefixMention)) {
@@ -111,7 +119,7 @@ const init = async () => {
                         },
                        {
                             name: "De passage ?",
-                            value: "Le cannal textuel **#public** et les cannaux vocaux **#donjons** te sont ouverts !\n Bon jeux parmis nous ! "
+                            value: "Le cannal textuel **#public** et les canaux vocaux **#donjons** te sont ouverts !\n Bon jeux parmis nous ! "
                         },
                        {
                             name: ":new: DeathReapers Recrute !",

@@ -1,3 +1,4 @@
 {
-   "prefix": "!"
+   "prefix": "!",
+   "allowed_users": ["Oxa","Millie","Préludix",]
 }
