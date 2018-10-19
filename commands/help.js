@@ -4,10 +4,11 @@ exports.run = (client, message, args) => {
             color: 3447003,
             title: "Besoin d'aide ?",
             description: "Voici les commandes que je supporte : ",
-            fields: [{
-                name: ":new: !logs ou !log",
-                value: "Affiche un lien vers les Warcraftlogs de la guilde"
-            },
+            fields: [
+                {
+                    name: "!logs ou !log",
+                    value: "Affiche un lien vers les Warcraftlogs de la guilde"
+                },
                 {
                     name: "!rank",
                     value: "Affiche le classement de la guilde"
@@ -17,12 +18,12 @@ exports.run = (client, message, args) => {
                     value: "Affiche le nombre de chaudrons/flasks pour un raid de 3h\n Exemple : !chaudron 20 4"
                 },
                 {
-                    name: ":new: !profil <joueur>",
+                    name: "!profil <joueur>",
                     value: "Affiche le profile du joueur \n Exemple : !profil Millieharis"
                 },
                                 {
                     name: ":new: !mm ou !affix",
-                    value: "Affiche des infos sur les Mythic+"
+                    value: "Affiche des infos sur les Mythic+ (Affixes,Donjons)"
                 },
                 {
                     name: "!aide",

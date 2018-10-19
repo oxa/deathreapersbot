@@ -39,7 +39,7 @@ exports.run =  (client, message, args) => {
                             value: "https://worldofwarcraft.com/fr-fr/character/elune/"+args[0]
                         },
                         {
-                            name: ":new: wow analyzer",
+                            name: "wow analyzer",
                             value: "https://wowanalyzer.com/character/EU/Elune/"+args[0]+"/"
                         },
                         {

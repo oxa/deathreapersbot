@@ -7,7 +7,7 @@ exports.run = (client, message, args) => {
             body += chunk;
         });
         res.on('end', function(){
-            var reports=JSON.parse(body)
+            var reports=JSON.parse(body);
             message.channel.send({embed: {
                     color: 3447003,
                     fields: [{
@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
                             value: "https://www.warcraftlogs.com/reports/"+reports[0].id
                         },
                         {
-                            name:":new: Optimisation du Raid",
+                            name:"Optimisation du Raid",
                             value:"https://www.wipefest.net/report/"+reports[0].id+"\nhttps://wowanalyzer.com/report/"+reports[0].id
                         }
                     ],

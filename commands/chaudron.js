@@ -9,12 +9,12 @@ exports.run =  (client, message, args) => {
     if (isNaN(flasks)) {
         return;
     }
-    let cauldrons = Math.floor(flasks / 30)
+    let cauldrons = Math.floor(flasks / 30);
     let flasks_to = flasks % 30;
     if (parseInt(flasks_to) >= 12) {
         cauldrons += 1;
     }
-    let flasks_left = cauldrons * 30 - flasks
+    let flasks_left = cauldrons * 30 - flasks;
     if (parseInt(flasks_left) < 0) {
         message.channel.send("Il faut craft " + cauldrons + " chaudron(s) et " + flasks_to + " flask(s)");
     } else

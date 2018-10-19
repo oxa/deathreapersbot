@@ -17,11 +17,11 @@ client.loadCommand = (commandName) => {
         if (props.init) {
             props.init(client);
         }
-        if (props.conf.enabled){
+        if (props.conf.enabled) {
             client.commands.set(props.conf.name, props);
             props.conf.aliases.forEach(alias => {
-            client.aliases.set(alias, props.conf.name);
-        });
+                client.aliases.set(alias, props.conf.name);
+            });
         }
 
         return false;
@@ -42,15 +42,15 @@ const init = async () => {
 
 
     client.on("ready", () => {
-        if (client.user.id==="491592769588953088"){
+        if (client.user.id === "491592769588953088") {
             console.log("DeathReapers Beta is UP")
         } else {
             console.log("DeathReapers Prod is UP")
         }
         try {
             client.users.get("121522123910021120").send("I'm UP and running");
-            client.user.setActivity('!aide pour me parler', { type: 'WATCHING' });
-                var url = 'https://eu.api.battle.net/wow/guild/Elune/DeathReapers?fields=members&locale=en_GB&apikey='+process.env.BLIZZ_KEY;
+            client.user.setActivity('!aide pour me parler', {type: 'WATCHING'});
+            var url = 'https://eu.api.battle.net/wow/guild/Elune/DeathReapers?fields=members&locale=en_GB&apikey=' + process.env.BLIZZ_KEY;
             https.get(url, function (res) {
                 var body = '';
                 res.on('data', function (chunk) {
@@ -63,7 +63,7 @@ const init = async () => {
                             client.raiders.set(members_raw.members[id].character.name, {});
                         }
                     }
-                    console.log("Imported : "+client.raiders.keyArray().length+" guild members");
+                    console.log("Imported : " + client.raiders.keyArray().length + " guild members");
                     //let members=client.guilds.get('492764538857324544').members;
                     //for (let member in members){
                     //    console.log(client.guilds.get('492764538857324544').members.get(member));
@@ -74,7 +74,7 @@ const init = async () => {
             });
 
         }
-        catch(error) {
+        catch (error) {
             console.error(error);
 
         }
@@ -82,8 +82,8 @@ const init = async () => {
 
     client.on("message", message => {
         if (message.author.bot) return;
-        if (!config.allowed_users.includes(message.author.username)){
-            console.log(message.author.username+ "forbiden command !");
+        if (!config.allowed_users.includes(message.author.username)) {
+            console.log(message.author.username + "forbidden command !");
 
             return;
         }
@@ -98,7 +98,7 @@ const init = async () => {
         const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
 
-        console.log(message.author.username+" : "+message.content)
+        console.log(message.author.username + " : " + message.content)
 
         const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
         if (!cmd) {
@@ -110,27 +110,29 @@ const init = async () => {
     });
 
     client.on("guildMemberAdd", member => {
-        member.send({embed: {
-                    color: 3447003,
-                    fields: [
-                        {
-                            name: "Bienvenue chez DeathReapers !",
-                            value: "Que tu sois un membre ou de passage sois le bienvenue ! Merci de respecter la charte de guilde. "
-                        },
-                       {
-                            name: "De passage ?",
-                            value: "Le cannal textuel **#public** et les canaux vocaux **#donjons** te sont ouverts !\n Bon jeux parmis nous ! "
-                        },
-                       {
-                            name: ":new: DeathReapers Recrute !",
-                            value: "DeathReapers est toujours à la recherche de joueurs motivés ! \n/w Préludix, Millieharis, Naturiel ou rendez-vous sur [wowprogress](https://www.wowprogress.com/guild/eu/elune/deathReapers) pour plus d'infos"
-                        },
-                        {
-                            name: "De l'aide ?",
-                            value: "!aide pour plus d'infos sur le bot"
-                        },
-                    ],
-                }});
+        member.send({
+            embed: {
+                color: 3447003,
+                fields: [
+                    {
+                        name: "Bienvenue chez DeathReapers !",
+                        value: "Que tu sois un membre ou de passage sois le bienvenue ! Merci de respecter la charte de guilde. "
+                    },
+                    {
+                        name: "De passage ?",
+                        value: "Le cannal textuel **#public** et les canaux vocaux **#donjons** te sont ouverts !\n Bon jeux parmis nous ! "
+                    },
+                    {
+                        name: ":new: DeathReapers Recrute !",
+                        value: "DeathReapers est toujours à la recherche de joueurs motivés ! \n/w Préludix, Millieharis, Naturiel ou rendez-vous sur [wowprogress](https://www.wowprogress.com/guild/eu/elune/deathReapers) pour plus d'infos"
+                    },
+                    {
+                        name: "De l'aide ?",
+                        value: "!aide pour plus d'infos sur le bot"
+                    },
+                ],
+            }
+        });
     });
 
     client.on('error', console.error);
