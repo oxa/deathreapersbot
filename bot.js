@@ -85,7 +85,7 @@ const init = async () => {
         if (!config.allowed_users.includes(message.author.username)) {
             console.log(message.author.username + "forbidden command !");
 
-            return;
+            //return;
         }
         //TODO:review usage of this block
         const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
