@@ -97,11 +97,12 @@ const init = async () => {
         console.log(message.author.username + " : " + message.content)
 
         const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
-        const props = require(`./commands/${command}`);
         if (!cmd) {
             message.author.send("Heu... je sens que tu veux me dire quelque chose mais tu galères... Tape : !aide pour avoir un coup de main");
             return;
         }
+        const props = require(`./commands/${command}`);
+
 
         if (props.conf.admin){
             if (!config.allowed_users.includes(message.author.username)) {
