@@ -21,5 +21,9 @@ exports.run = (client, message, args) => {
 exports.conf = {
   enabled: true,
   aliases: ["ranks"],
-    name:"rank"
+  name:"rank",
+  admin: false,
+
+
+
 };

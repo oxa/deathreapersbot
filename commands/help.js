@@ -37,7 +37,9 @@ exports.run = (client, message, args) => {
 };
 
 exports.conf = {
-    name:"help",
+  name:"help",
   enabled: true,
   aliases: ["aide","info","about"],
+  admin: false,
+
 };

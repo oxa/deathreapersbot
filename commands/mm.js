@@ -30,7 +30,7 @@ exports.run = (client, message, args) => {
                 affixes += "Affixes=" + mm.affix_details[affix].id + "&";
             }
 
-            http.get("http://bestkeystone.com:8888/api/keystonedata/GetAffix?" + affixes, function (res) {
+            http.get("http://api.bestkeystone.com/api/keystonedata/GetAffix?" + affixes, function (res) {
                 var body = '';
                 res.on('data', function (chunk) {
                     body += chunk;
@@ -49,6 +49,9 @@ exports.run = (client, message, args) => {
                                     "[5] " + mm.dungeons[4].name + "\n"
                             }
                             ],
+                            footer: {
+                            text: "Powered by : http://bestkeystone.com/",
+                        }
                         }
                     });
                 });
@@ -66,5 +69,7 @@ exports.run = (client, message, args) => {
 exports.conf = {
     enabled: true,
     aliases: ["mm+", "affixes", "affix"],
-    name: "mm"
+    name: "mm",
+    admin: false,
+
 };

@@ -60,5 +60,7 @@ exports.run =  (client, message, args) => {
 exports.conf = {
     enabled: true,
     aliases: ["cherche","wow","profile","profil"],
-    name : "find"
+    name : "find",
+    admin: false,
+
 };

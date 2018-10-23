@@ -6,4 +6,5 @@ exports.conf = {
   name:"audit",
   enabled: true,
   aliases: ["yukie"],
+  admin: true,
 };

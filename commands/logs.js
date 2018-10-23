@@ -31,6 +31,9 @@ exports.run = (client, message, args) => {
 };
 
 exports.conf = {
-    name:"logs", enabled: true,
+    name:"logs",
+    enabled: true,
     aliases: ["log"],
+    admin: false,
+
 };

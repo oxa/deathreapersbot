@@ -24,5 +24,6 @@ exports.run =  (client, message, args) => {
 exports.conf = {
   enabled: true,
   aliases: ["chaudrons"],
-    name : "chaudron"
+  name : "chaudron",
+  admin: false,
 };
