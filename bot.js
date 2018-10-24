@@ -40,7 +40,6 @@ const init = async () => {
         if (response) console.log(response);
     });
 
-
     client.on("ready", () => {
         if (client.user.id === "491592769588953088") {
             console.log("DeathReapers Beta is UP")
@@ -94,14 +93,14 @@ const init = async () => {
         const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
 
-        console.log(message.author.username + " : " + message.content)
+        console.log(message.author.username + " : " + message.content);
 
         const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
         if (!cmd) {
             message.author.send("Heu... je sens que tu veux me dire quelque chose mais tu galères... Tape : !aide pour avoir un coup de main");
             return;
         }
-        const props = require(`./commands/${command}`);
+        const props = require(`./commands/${cmd.conf.name}`);
 
 
         if (props.conf.admin){
@@ -110,7 +109,6 @@ const init = async () => {
                 return;
             }
         }
-
 
         cmd.run(client, message, args);
 
