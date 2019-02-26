@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
                 }
             });
 
-            let affixes = "";
+/*            let affixes = "";
             for (let affix in mm.affix_details) {
                 affixes += "Affixes=" + mm.affix_details[affix].id + "&";
             }
@@ -57,7 +57,7 @@ exports.run = (client, message, args) => {
                 });
             }).on('error', function (e) {
                 console.log("Got an error: ", e);
-            });
+            });*/
         });
     }).on('error', function (e) {
         console.log("Got an error: ", e);
