@@ -37,7 +37,7 @@ exports.run = (client, message, args) => {
                     },
                     {
                         name: "Details : ",
-                        value: "Taux d'alchool : "+String(beer.abv)+"% PH : "+String(beer.ph)
+                        value: "Taux d'alcool : "+String(beer.abv)+"% PH : "+String(beer.ph)
                     },
 
                 ],
