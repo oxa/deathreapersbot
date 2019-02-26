@@ -49,7 +49,8 @@ const init = async () => {
         try {
             client.users.get("121522123910021120").send("I'm UP and running");
             client.user.setActivity('!aide pour me parler', {type: 'WATCHING'});
-            var url = 'https://eu.api.battle.net/wow/guild/Elune/DeathReapers?fields=members&locale=en_GB&apikey=' + process.env.BLIZZ_KEY;
+            //TODO:FIX BLIZZARD NEW API CALL
+  /*          var url = 'https://eu.api.battle.net/wow/guild/Elune/DeathReapers?fields=members&locale=en_GB&apikey=' + process.env.BLIZZ_KEY;
             https.get(url, function (res) {
                 var body = '';
                 res.on('data', function (chunk) {
@@ -70,7 +71,7 @@ const init = async () => {
                 });
             }).on('error', function (e) {
                 console.log("Got an error: ", e);
-            });
+            });*/
 
         }
         catch (error) {
