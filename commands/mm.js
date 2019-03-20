@@ -25,39 +25,69 @@ exports.run = (client, message, args) => {
                 }
             });
 
-/*            let affixes = "";
-            for (let affix in mm.affix_details) {
-                affixes += "Affixes=" + mm.affix_details[affix].id + "&";
-            }
 
-            http.get("http://api.bestkeystone.com/api/keystonedata/GetAffix?" + affixes, function (res) {
+
+        function getDungeonByID(dID) {
+            var dungeons_ids =[{"id":1763,"keystone_id":244,"name":"Atal'Dazar","slug":"ataldazar","time":1800999,"score":0.0,"runs":null},{"id":1822,"keystone_id":353,"name":"Siege of Boralus","slug":"siege-of-boralus","time":2160999,"score":0.0,"runs":null},{"id":1594,"keystone_id":247,"name":"The MOTHERLODE!!","slug":"the-motherlode","time":2340999,"score":0.0,"runs":null},{"id":1841,"keystone_id":251,"name":"The Underrot","slug":"the-underrot","time":1980999,"score":0.0,"runs":null},{"id":1877,"keystone_id":250,"name":"Temple of Sethraliss","slug":"temple-of-sethraliss","time":2160999,"score":0.0,"runs":null},{"id":1754,"keystone_id":245,"name":"Freehold","slug":"freehold","time":2160999,"score":0.0,"runs":null},{"id":1862,"keystone_id":248,"name":"Waycrest Manor","slug":"waycrest-manor","time":2340999,"score":0.0,"runs":null},{"id":1771,"keystone_id":246,"name":"Tol Dagor","slug":"tol-dagor","time":2160999,"score":0.0,"runs":null},{"id":1762,"keystone_id":249,"name":"Kings' Rest","slug":"kings-rest","time":2520999,"score":0.0,"runs":null},{"id":1864,"keystone_id":252,"name":"Shrine of the Storm","slug":"shrine-of-the-storm","time":2520999,"score":0.0,"runs":null}]
+
+            for (let dj in dungeons_ids) {
+                if ( dID === dungeons_ids[dj]["id"])
+                    return dungeons_ids[dj]["name"];
+            }
+         }
+
+    var url = 'https://api.bestkeystone.com/api/Periode?weeks=1';
+    https.get(url, function(res){
+        var body = '';
+        res.on('data', function(chunk){
+            body += chunk;
+        });
+        res.on('end', function(){
+            let raw_json=JSON.parse(body);
+            var url = 'https://api.bestkeystone.com/api/Dungeon/leaderboard?periode='+String(raw_json[0]["id"])+'&min_level=10&amount=1000&limitToLowestDungeon=false';
+
+            https.get(url, function(res){
                 var body = '';
-                res.on('data', function (chunk) {
+                res.on('data', function(chunk){
                     body += chunk;
                 });
-                res.on('end', function () {
-                    var mm = JSON.parse(body);
+                res.on('end', function(){
+                    var mm=JSON.parse(body);
+
                     message.channel.send({
                         embed: {
                             color: 3447003,
                             fields: [{
                                 name: ":new: Meilleurs donjons de la semaine pour ces affixes: ",
-                                value: "[1] " + mm.dungeons[0].name + "\n" +
-                                    "[2] " + mm.dungeons[1].name + "\n" +
-                                    "[3] " + mm.dungeons[2].name + "\n" +
-                                    "[4] " + mm.dungeons[3].name + "\n" +
-                                    "[5] " + mm.dungeons[4].name + "\n"
+                                value: "[1] " + getDungeonByID(mm[0]["id"]) + "\n" +
+                                    "[2] " + getDungeonByID(mm[1]["id"]) + "\n" +
+                                    "[3] " + getDungeonByID(mm[2]["id"]) + "\n" +
+                                    "[4] " + getDungeonByID(mm[3]["id"]) + "\n" +
+                                    "[5] " + getDungeonByID(mm[4]["id"]) + "\n"
                             }
                             ],
                             footer: {
-                            text: "Powered by : http://bestkeystone.com/",
-                        }
+                                text: "Powered by : http://bestkeystone.com/",
+                            }
                         }
                     });
+
+
                 });
-            }).on('error', function (e) {
+            }).on('error', function(e){
                 console.log("Got an error: ", e);
-            });*/
+            });
+
+
+
+
+
+        });
+    }).on('error', function(e){
+        console.log("Got an error: ", e);
+    });
+
+
         });
     }).on('error', function (e) {
         console.log("Got an error: ", e);

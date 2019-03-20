@@ -22,7 +22,7 @@ exports.run = (client, message, args) => {
             message.channel.send({embed: {
                 color: 3447003,
                 author: {
-                    name: "Deja vue de la "+beer.name+" ?",
+                    name: "Déjà bue de la "+beer.name+" ?",
                     icon_url: beer.image_url
                 },
 
@@ -36,8 +36,8 @@ exports.run = (client, message, args) => {
                         value: String(beer.food_pairing)
                     },
                     {
-                        name: "Details : ",
-                        value: "Taux d'alcool : "+String(beer.abv)+"% PH : "+String(beer.ph)
+                        name: "Détails : ",
+                        value: "Taux d'alcool : "+String(beer.abv)
                     },
 
                 ],
@@ -50,7 +50,7 @@ exports.run = (client, message, args) => {
 
 exports.conf = {
   enabled: true,
-  aliases: ["beers","beer","biere","binouze"],
+  aliases: ["beers","beer","biere","binouze","bière"],
   name:"beer",
   admin: false,
 

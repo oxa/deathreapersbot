@@ -20,7 +20,7 @@ exports.run = (client, message, args) => {
 
 exports.conf = {
   enabled: true,
-  aliases: ["ranks"],
+  aliases: ["ranks","progress"],
   name:"rank",
   admin: false,
 
